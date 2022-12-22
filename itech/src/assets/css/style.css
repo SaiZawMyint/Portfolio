@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'system';
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+@font-face {
+    font-family: 'rub';
+    src: url('../fonts/rb-font.ttf');
+}
+body, body * {
+    font-family: 'system';
+}
+
+:root{
+    --app-color: #1a96ee;
+    --app-mute-color: #e1e4e6;
+    --app-dark-color: #334155;
+}
+
+.text-sys-primary{
+    color: var(--app-color);
+}
+
+.text-sys-secondary{
+    color: var(--app-mute-color);
+}
+
+.text-sys-dark{
+    color: var(--app-dark-color);
+}
+.font-rub{
+    font-family: 'rub' !important;
+}

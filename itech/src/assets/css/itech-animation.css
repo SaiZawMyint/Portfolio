@@ -1,0 +1,27 @@
+.rounded-hover{
+    position: relative;
+    overflow: hidden;
+    transition: all .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.rounded-hover::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    top: 100%;
+    left: -10%;
+    transform: translateY(-50%);
+    background: radial-gradient(at 10%,#1a96ee,#07d7fcd2,#1a96ee);
+    z-index: -1;
+    transition: all .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.rounded-hover:hover,
+.rounded-hover:focus{
+    color: rgb(4, 32, 46);
+}
+.rounded-hover:hover::before,
+.rounded-hover:focus::before{
+    width: 200px;
+    height: 200px;
+}
