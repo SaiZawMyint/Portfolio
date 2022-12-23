@@ -1,17 +1,20 @@
 <template>
-    <div class="absolute top-0 left-0 w-full h-full bg-gray-800">
+    <div class="absolute top-0 left-0 w-full h-full bubble-wrapper"
+    :style="`background: ${background}`">
         <div class="bubble" v-for="bubble in bubbles" :style="getBubbleClass(bubble.style)"
         :class="getAnimationClass(bubble.animation)">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span/>
+            <span/>
+            <span/>
+            <span/>
+            <span/>
         </div>
     </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+
 defineProps({
     bubbles: {
         type: Array,
@@ -50,13 +53,22 @@ defineProps({
                 }
             },
         ]
+    },
+    background: {
+        type: String,
+        default: '#334155'
     }
 })
+
+const emits = defineEmits(['scroll'])
+
 const getBubbleClass = function (bubble) {
     let style = ``;
     for (let key in bubble) {
+        
         style += `${key}: ${bubble[key]};`
     }
+    console.log(style)
     return style
 }
 const getAnimationClass = function(animation){
@@ -66,6 +78,11 @@ const getAnimationClass = function(animation){
     }
     return anicls
 }
+onMounted(()=>{
+    document.addEventListener('wheel',function(e){
+        emits('scroll',e)
+    })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -74,6 +91,7 @@ const getAnimationClass = function(animation){
     border-radius: 50%;
     box-shadow: inset 0 0 25px rgba(235, 235, 235, 0.25);
     background-color: #006aff21;
+    transition: all .4s ease-in-out;
     animation: bubble 8s ease-in-out infinite;
 }
 

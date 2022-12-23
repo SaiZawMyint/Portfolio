@@ -13,7 +13,10 @@
 body, body * {
     font-family: 'system';
 }
-
+body{
+    background: linear-gradient(#e66465, #9198e5);
+    overflow: hidden;
+}
 :root{
     --app-color: #1a96ee;
     --app-mute-color: #e1e4e6;

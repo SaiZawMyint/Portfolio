@@ -19,7 +19,16 @@
       </div>
       <div class="w-[60%] top-[50%] left-[50%] absolute translate-x-[-50%] text-slate-300 translate-y-[-50%] z-10 text-center">
         <h2 class="text-[4em] font-rub text-sys-primary">i Tech</h2>
-        <span class="-mt-4 block text-slate-300">Software Company</span>
+        <span class="-mt-4 block flex items-center justify-center text-slate-300">
+          <span class="pr-2 text-sys-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+            </svg>
+          </span> 
+          Software Company
+        </span>
         <p class="mt-4 max-w-[600px] mx-auto">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus ipsam perspiciatis eligendi.
         </p>
@@ -36,7 +45,9 @@
           <a href="#" class="text-sm text-sys-primary">Contact us</a>
         </div>
       </div>
-      <Bubbles :bubbles="bubbles"/>
+      <Bubbles :bubbles="bubbles" background="linear-gradient(335deg, #000B18, #00172D, #220a3a, #112745)"
+      @scroll="scrollHandler"
+      />
       <div class="navigator absolute bottom-[10%] left-[50%] translate-x-[-50%] flex items-center justify-center">
         <a href="#" class="w-3 h-3 rounded-full bg-sky-600 ring-slate-500 ring-1 mx-2"></a>
         <a href="#" class="w-3 h-3 rounded-full bg-gray-600 ring-slate-500 ring-1 mx-2"></a>
@@ -49,9 +60,10 @@
   </Layout>
 </template>
 <script setup>
+import { ref } from 'vue';
 import Bubbles from '../components/Itech/ui/Bubbles.vue';
 import Layout from '../layouts/Layout.vue';
-const bubbles = [
+const bubbles = ref([
   {
     animation: {
       delay: 4
@@ -60,7 +72,8 @@ const bubbles = [
       width: '60px',
       height: '60px',
       top: '20%',
-      left: '43%'
+      left: '43%',
+      "transform": 'scale(1)'
     }
   },
   {
@@ -71,7 +84,8 @@ const bubbles = [
       width: '60px',
       height: '60px',
       top: '65%',
-      left: '9%'
+      left: '9%',
+      "transform": 'scale(1)'
     }
   },
   {
@@ -82,7 +96,8 @@ const bubbles = [
       width: '60px',
       height: '60px',
       top: '55%',
-      left: '68%'
+      left: '68%',
+      "transform": 'scale(1)'
     }
   },
   {
@@ -93,7 +108,56 @@ const bubbles = [
       width: '20px',
       height: '20px',
       top: '55%',
-      left: '68%'
+      left: '68%',
+      "transform": 'scale(1)'
+    }
+  },
+  {
+    animation: {
+      delay: 2
+    },
+    style: {
+      width: '20px',
+      height: '20px',
+      top: '55%',
+      left: '20%',
+      "transform": 'scale(1)'
+    }
+  },
+  {
+    animation: {
+      delay: 2
+    },
+    style: {
+      width: '30px',
+      height: '30px',
+      top: '55%',
+      left: '30%',
+      "transform": 'scale(1)'
+    }
+  },
+  {
+    animation: {
+      delay: 1
+    },
+    style: {
+      width: '100px',
+      height: '100px',
+      top: '55%',
+      left: '28%',
+      "transform": 'scale(1)'
+    }
+  },
+  {
+    animation: {
+      delay: 2
+    },
+    style: {
+      width: '20px',
+      height: '20px',
+      top: '10%',
+      left: '10%',
+      "transform": 'scale(1)'
     }
   },
   {
@@ -104,7 +168,8 @@ const bubbles = [
       width: '30px',
       height: '30px',
       top: '75%',
-      left: '84%'
+      left: '84%',
+      "transform": 'scale(1)'
     }
   },{
     animation: {
@@ -114,7 +179,8 @@ const bubbles = [
       width: '25px',
       height: '25px',
       top: '50%',
-      left: '85%'
+      left: '85%',
+      "transform": 'scale(1)'
     }
   },
   {
@@ -125,7 +191,8 @@ const bubbles = [
       width: '200px',
       height: '200px',
       top: '50%',
-      left: '71%'
+      left: '71%',
+      "transform": 'scale(1)'
     }
   },
   {
@@ -136,8 +203,18 @@ const bubbles = [
       width: '60px',
       height: '60px',
       top: '50%',
-      left: '85%'
+      left: '85%',
+      "transform": 'scale(1)'
     }
   },
-]
+])
+const markScroll = ref(0)
+const scrollHandler = function(e){
+  markScroll.value += e.deltaY
+  console.log(markScroll.value)
+  bubbles.value.forEach((bubble)=>{
+    bubble.style['transform'] = `scale(${ Math.abs(markScroll.value / 41)})`
+    // bubble.style['animation'] = `unset`
+  })
+}
 </script>
