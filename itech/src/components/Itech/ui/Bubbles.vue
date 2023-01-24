@@ -1,7 +1,7 @@
 <template>
     <div class="absolute top-0 left-0 w-full h-full bubble-wrapper"
     :style="`background: ${background}`">
-        <div class="bubble" v-for="bubble in bubbles" :style="getBubbleClass(bubble.style)"
+        <div class="bubble" v-for="bubble in bubblesElements" :style="getBubbleStyle(bubble.style)"
         :class="getAnimationClass(bubble.animation)">
             <span/>
             <span/>
@@ -13,9 +13,8 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-
-defineProps({
+import { onMounted, toRef } from 'vue';
+const props = defineProps({
     bubbles: {
         type: Array,
         default: [
@@ -60,21 +59,21 @@ defineProps({
     }
 })
 
+const bubblesElements = toRef(props,'bubbles')
+
 const emits = defineEmits(['scroll'])
 
-const getBubbleClass = function (bubble) {
+const getBubbleStyle = function (bubble) {
     let style = ``;
     for (let key in bubble) {
-        
         style += `${key}: ${bubble[key]};`
     }
-    console.log(style)
     return style
 }
 const getAnimationClass = function(animation){
     let anicls = ``
     for(let key in animation){
-        anicls += `itech-${key}-${animation[key]}`
+        anicls += `itech-${key}-${animation[key]} `
     }
     return anicls
 }
@@ -82,19 +81,59 @@ onMounted(()=>{
     document.addEventListener('wheel',function(e){
         emits('scroll',e)
     })
+    document.addEventListener('click',function(e){
+        let top = e.clientY - 25
+        let left = e.clientX - 10
+        let id = new Date().getMilliseconds()
+        let bubProps = {
+                id: id,
+                animation: {
+                    delay: 3,
+                    behaviour: 'float'
+                },
+                style: {
+                    width: '35px',
+                    height: '35px',
+                    top: `${top}px`,
+                    left: `${left}px`,
+                    "z-index": `90`
+                }
+            }
+        bubblesElements.value.push(bubProps)
+        let int = setInterval(timeout,3000)
+        function timeout(){
+            let index = -1
+            bubblesElements.value.forEach((b,i)=>{
+                if('id' in b && b.id === id){
+                    index = i
+                    b.style['display'] = 'none'
+                    // bubblesElements.value.splice(index,1)
+                    return false
+                }
+            })
+            clearInterval(int)
+        }
+    })
 })
+
 </script>
 
 <style lang="scss" scoped>
+.bubble-wrapper{
+    transition: all .4s ease-in-out;
+}
 .bubble {
     position: absolute;
+    cursor: pointer;
     border-radius: 50%;
     box-shadow: inset 0 0 25px rgba(235, 235, 235, 0.25);
     background-color: #006aff21;
     transition: all .4s ease-in-out;
     animation: bubble 8s ease-in-out infinite;
 }
-
+.bubble.itech-behaviour-float{
+    animation: float 5s ease-in-out;
+}
 .bubble::before,
 .bubble::after {
     content: '';
@@ -119,6 +158,7 @@ onMounted(()=>{
 .bubble span {
     position: absolute;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .bubble span:nth-child(1) {
@@ -167,6 +207,11 @@ onMounted(()=>{
 
     50% {
         transform: translateY(20px);
+    }
+}
+@keyframes float{
+    to{
+        top: 0
     }
 }
 </style>

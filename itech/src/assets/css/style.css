@@ -12,6 +12,7 @@
 }
 body, body * {
     font-family: 'system';
+    user-select: none;
 }
 body{
     background: linear-gradient(#e66465, #9198e5);
@@ -36,4 +37,100 @@ body{
 }
 .font-rub{
     font-family: 'rub' !important;
+}
+.fade-up{
+    transform-origin: center;
+    animation: fade 1.4s 1 ease-in-out, scale 1s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.slide-up-enter-active,
+.slide-up-leave-active{
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.slide-up-enter-from,
+.slide-up-leave-to{
+    top: 100%;
+    opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active{
+    transition: all 1s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to{
+    opacity: 0;
+}
+.move-out-enter-active,
+.move-out-leave-active{
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.move-out-enter-from{
+    transform: translate(-50%,-50%) scale(0)
+}
+.move-out-enter-to{
+    transform: translate(-50%,-50%) scale(1);
+}
+.move-out-leave-active .fade-up{
+    animation: fade reverse 1.4s 1 ease-in-out, scale reverse 1s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.move-out-leave-to{
+    left: 40%;
+    opacity: 0;
+}
+.comp-2-enter-active,
+.comp-2-leave-active{
+    transition: all 1s ease-in-out;
+}
+.comp-2-enter-from,
+.comp-2-leave-to{
+    opacity: 0;
+}
+.comp-2-enter-active .left-comp{
+    animation: left 1s ease-in-out, fade 2s ease-in-out;
+}
+.comp-2-enter-active .right-comp{
+    animation: right 1s ease-in-out, fade 2s ease-in-out;
+}
+.comp-2-leave-active .left-comp{
+    animation: left reverse 1s ease-in-out, fade reverse 2s ease-in-out;
+}
+.comp-2-leave-active .right-comp{
+    animation: right reverse 1s ease-in-out, fade reverse 2s ease-in-out;
+}
+
+@keyframes left {
+    0%{
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes right {
+    0%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes scale {
+    from{
+        transform: translate(-50%,-50%) scale(0) ;
+    }
+    to{
+        transform: translate(-50%,-50%) scale(1) ;
+    }
 }
