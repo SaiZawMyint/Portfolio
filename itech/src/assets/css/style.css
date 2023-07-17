@@ -1,136 +1,203 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @font-face {
     font-family: 'system';
     src: url('../fonts/Poppins-Regular.ttf');
 }
+
 @font-face {
     font-family: 'rub';
     src: url('../fonts/rb-font.ttf');
 }
-body, body * {
+
+body,
+body * {
     font-family: 'system';
     user-select: none;
 }
-body{
-    background: linear-gradient(#e66465, #9198e5);
-    overflow: hidden;
+
+body {
+    background: #1D1D1D;
 }
-:root{
+
+:root {
     --app-color: #1a96ee;
+    --app-color-50: #1a96ee76;
     --app-mute-color: #e1e4e6;
     --app-dark-color: #334155;
 }
 
-.text-sys-primary{
+
+/* For Chrome, Safari, and Opera */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+/* For vertical scrollbar */
+
+ ::-webkit-scrollbar-thumb {
+    background-color: var(--app-color);
+    border-radius: 3px;
+}
+
+
+/* On hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--app-color-50);
+}
+
+
+/* For horizontal scrollbar */
+
+ ::-webkit-scrollbar-thumb:horizontal {
+    background-color: var(--app-color);
+    border-radius: 5px;
+}
+
+
+/* Track style */
+
+ ::-webkit-scrollbar-track {
+    background: #1D1D1D;
+}
+
+
+/* Corner style */
+
+ ::-webkit-scrollbar-corner {
+    background: #1D1D1D;
+}
+
+.text-sys-primary {
     color: var(--app-color);
 }
 
-.text-sys-secondary{
+.text-sys-secondary {
     color: var(--app-mute-color);
 }
 
-.text-sys-dark{
+.text-sys-dark {
     color: var(--app-dark-color);
 }
-.font-rub{
+
+.font-rub {
     font-family: 'rub' !important;
 }
-.fade-up{
+
+.fade-up {
     transform-origin: center;
     animation: fade 1.4s 1 ease-in-out, scale 1s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .slide-up-enter-active,
-.slide-up-leave-active{
+.slide-up-leave-active {
     transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .slide-up-enter-from,
-.slide-up-leave-to{
+.slide-up-leave-to {
     top: 100%;
     opacity: 0;
 }
+
 .fade-enter-active,
-.fade-leave-active{
+.fade-leave-active {
     transition: all 1s ease-in-out;
 }
+
 .fade-enter-from,
-.fade-leave-to{
+.fade-leave-to {
     opacity: 0;
 }
+
 .move-out-enter-active,
-.move-out-leave-active{
+.move-out-leave-active {
     transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.move-out-enter-from{
-    transform: translate(-50%,-50%) scale(0)
+
+.move-out-enter-from {
+    transform: scale(0)
 }
-.move-out-enter-to{
-    transform: translate(-50%,-50%) scale(1);
+
+.move-out-enter-to {
+    transform: scale(1);
 }
-.move-out-leave-active .fade-up{
+
+.move-out-leave-active .fade-up {
     animation: fade reverse 1.4s 1 ease-in-out, scale reverse 1s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.move-out-leave-to{
+
+.move-out-leave-to {
     left: 40%;
     opacity: 0;
 }
+
 .comp-2-enter-active,
-.comp-2-leave-active{
+.comp-2-leave-active {
     transition: all 1s ease-in-out;
 }
+
 .comp-2-enter-from,
-.comp-2-leave-to{
+.comp-2-leave-to {
     opacity: 0;
 }
-.comp-2-enter-active .left-comp{
+
+.comp-2-enter-active .left-comp {
     animation: left 1s ease-in-out, fade 2s ease-in-out;
 }
-.comp-2-enter-active .right-comp{
+
+.comp-2-enter-active .right-comp {
     animation: right 1s ease-in-out, fade 2s ease-in-out;
 }
-.comp-2-leave-active .left-comp{
+
+.comp-2-leave-active .left-comp {
     animation: left reverse 1s ease-in-out, fade reverse 2s ease-in-out;
 }
-.comp-2-leave-active .right-comp{
+
+.comp-2-leave-active .right-comp {
     animation: right reverse 1s ease-in-out, fade reverse 2s ease-in-out;
 }
 
 @keyframes left {
-    0%{
+    0% {
         transform: translateX(100%);
         opacity: 0;
     }
-    100%{
+    100% {
         transform: translateX(0%);
         opacity: 1;
     }
 }
 
 @keyframes right {
-    0%{
+    0% {
         transform: translateX(-100%);
         opacity: 0;
     }
-    100%{
+    100% {
         transform: translateX(0%);
         opacity: 1;
     }
 }
+
 @keyframes fade {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+    to {
         opacity: 1;
     }
 }
+
 @keyframes scale {
-    from{
-        transform: translate(-50%,-50%) scale(0) ;
+    from {
+        transform: scale(0);
     }
-    to{
-        transform: translate(-50%,-50%) scale(1) ;
+    to {
+        transform: scale(1);
     }
 }

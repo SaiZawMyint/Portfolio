@@ -5,7 +5,7 @@
             <div class="w-[40%] left-comp">
                 <img src="@assets/img/our-service.svg" alt="Service" class="w-full">
             </div>
-            <div class="bg-gray-100/20 w-[50%] right-comp backdrop-blur-sm rounded-lg ring-slate-100/50 ring-1 p-3">
+            <div class="bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 w-[50%] right-comp rounded-lg ring-slate-500/50 ring-1 p-3">
                 <h1 class="text-xl">Welcome to <span
                         class="text-sys-primary tracking-widest font-bold font-rub">iTech</span></h1>
                 <p class="pt-4">

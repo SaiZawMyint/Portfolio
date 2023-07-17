@@ -1,13 +1,14 @@
 <template>
-    <div class="absolute top-0 left-0 w-full h-full bubble-wrapper"
-    :style="`background: ${background}`">
+    <div class="top-0 left-0 w-full h-full bubble-wrapper"
+    :class="position"
+    :style="style">
         <div class="bubble" v-for="bubble in bubblesElements" :style="getBubbleStyle(bubble.style)"
         :class="getAnimationClass(bubble.animation)">
-            <span/>
-            <span/>
-            <span/>
-            <span/>
-            <span/>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 </template>
@@ -56,6 +57,14 @@ const props = defineProps({
     background: {
         type: String,
         default: '#334155'
+    },
+    style: {
+        type: Object,
+        default: ''
+    },
+    position: {
+        type: String,
+        default: 'absolute'
     }
 })
 
@@ -107,7 +116,6 @@ onMounted(()=>{
                 if('id' in b && b.id === id){
                     index = i
                     b.style['display'] = 'none'
-                    // bubblesElements.value.splice(index,1)
                     return false
                 }
             })

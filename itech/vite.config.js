@@ -7,11 +7,15 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@assets': path.resolve(__dirname, './src/assets/')
-    }
-  }
+    plugins: [vue(), vueJsx()],
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src',
+                import.meta.url)),
+            '@assets': path.resolve(__dirname, './src/assets/'),
+
+            '@js': path.resolve(__dirname, './src/assets/js')
+        }
+    },
+    assetsInclude: ['**/*.riv'],
 })
