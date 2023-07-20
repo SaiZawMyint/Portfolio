@@ -3,11 +3,11 @@
         <div>
             <div class="h-[100vh] mx-auto flex justify-center items-center" data-aos="zoom-in">
                 <div class="fade-up  text-slate-300 text-center">
-                    <!-- <h2 class="text-[4em] font-rub text-sys-primary">i Tech</h2> -->
                     <div class="w-full flex items-center justify-center">
                         <img src="@assets/svgs/itech-logo-dark.svg" alt="" width="400" class="-mb-[140px] -ml-[50px]">
                     </div>
-                    <div class="-mt-4 w-[fit-content] px-2 mx-auto flex items-center justify-center text-slate-100 text-lg bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-blue-900/40 via-blue-800/40 to-blue-900/40 rounded-lg ring-slate-500/50 ring-1">
+                    <div
+                        class="-mt-4 w-[fit-content] px-2 mx-auto flex items-center justify-center text-slate-100 text-sm bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-blue-900/40 via-blue-800/40 to-blue-900/40 rounded-lg ring-slate-500/50 ring-1">
                         <span class="pr-2 text-sys-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-4 h-4">
@@ -37,17 +37,24 @@
                     </div>
                 </div>
             </div>
-            <div class="py-10">
-                <div
-                    class="relative w-[80%] text-sm text-slate-300 flex flex-col items-center justify-between mx-auto h-[60%]">
+            <div id="sec-section"
+                class="py-10 relative w-[80%] text-sm text-slate-300 flex flex-col items-center justify-between mx-auto h-[60%]">
+                <div class="h-[100vh] flex items-center flex-col justify-center">
                     <h2 class="text-xl">
-                        Our Service
+                        Services
                     </h2>
                     <div class="w-[500px] left-comp" id="riveContainer" data-aos="zoom-in">
-                        <RiveView :src="riveSrc" width="500" height="500" />
+                        <RiveView :src="riveSrc" width="500" height="500" :state-machine="['State Machine 1']" />
                     </div>
-                    <div class="w-full flex justify-center items-center mt-12">
-                        <div class="relative flex flex-col items-center max-w-[33%] "  data-aos="fade-right">
+                    <p class="mt-4 text-lg max-w-[600px] mx-auto text-center">
+                        A leading software company dedicated to delivering innovative solutions that transform businesses
+                        and
+                        empower digital experiences.
+                    </p>
+                </div>
+                <div class="h-[100vh] flex flex-col relative justify-center items-center">
+                    <div class="w-full flex justify-center items-center">
+                        <div class="relative flex flex-col items-center max-w-[33%] " data-aos="fade-right">
                             <div class="z-10 absolute -top-[190px] flex items-end justify-center w-[300px]">
                                 <img src="@assets/svgs/software-development.svg" style="width: 100%; margin-bottom: -50px;">
                             </div>
@@ -67,9 +74,9 @@
                             </div>
                         </div>
 
-                        <div class="relative flex flex-col items-center max-w-[33%] "  data-aos="zoom-in">
+                        <div class="relative flex flex-col items-center max-w-[33%] " data-aos="zoom-in">
                             <div class="z-10 absolute -top-[150px] flex items-end justify-center w-[230px]">
-                                <img src="@assets/svgs/web-development-01.svg" style="width: 100%; margin-bottom: -50px;">
+                                <img src="@assets/svgs/web.svg" style="width: 100%; margin-bottom: -50px;">
                             </div>
                             <div
                                 class="bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1 p-3 pt-[70px] mx-2 text-center">
@@ -86,13 +93,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="relative flex flex-col items-center max-w-[33%] "  data-aos="fade-left">
-                            <div class="z-10 absolute -top-[190px] flex items-end justify-center w-[300px]">
-                                <img src="@assets/svgs/web-development.svg" style="width: 100%; margin-bottom: -50px;">
+                        <div class="relative flex flex-col items-center max-w-[33%] " data-aos="fade-left">
+                            <div class="z-10 absolute -top-[100px] flex items-end justify-center w-[300px]">
+                                <RiveView :src="mobileRiveIconSrc" :state-machine="['stateMachine']" scale="1.3" />
                             </div>
                             <div
                                 class="bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1 p-3 pt-[70px] mx-2 text-center">
-                                <h2 class="text-xl text-[#1a96ee] font-bold">Custom Web Development</h2>
+                                <h2 class="text-xl text-[#1a96ee] font-bold">Full-stack Development</h2>
                                 <p class="pt-4">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum rerum maiores corrupti
                                     molestiae
@@ -106,24 +113,129 @@
                             </div>
                         </div>
                     </div>
+                    <div class="w-[60%] py-[50px] mt-12">
+                        <p class="text-center">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias delectus reiciendis non sed,
+                            placeat quaerat ut at esse temporibus dicta et minus ex quasi distinctio iusto sit. Repellat,
+                            officia nisi.
+                        </p>
+                    </div>
 
                 </div>
+
+            </div>
+            <div class="h-[100vh] flex items-start justify-center w-[80%] py-[80px]">
+                <div class="relative w-[50%] flex items-end">
+                    <div class="w-[fit-content] relative flex items-center justify-center rounded-lg " data-aos="fade-up">
+                        <RiveView :src="prograssRiveSrc" width="200" height="300" fit="fill"
+                            :state-machine="['State Machine']" @on-load="progressRiveLoad" />
+                        <div class="absolute -bottom-[60px] flex flex-col items-center">
+                            <div class="flex items-center justify-between">
+                                <button id="progress-bar-up"
+                                    class="p-2 hover:text-slate-100 primary-text rounded-hover rounded-[10px] cursor-pointer flex items-center justify-center bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1">
+                                    <ArrowUpIcon class="w-4 h-4 font-bold " />
+                                </button>
+                                <button id="progress-bar-reset"
+                                    class="mx-2 p-2 hover:text-slate-100 primary-text rounded-hover rounded-[10px] cursor-pointer flex items-center justify-center bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1">
+                                    <ArrowPathRoundedSquareIcon class="w-4 h-4 font-bold " />
+                                </button>
+                                <button id="progress-bar-down"
+                                    class="p-2 hover:text-slate-100 primary-text rounded-hover rounded-[10px] cursor-pointer flex items-center justify-center bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1">
+                                    <ArrowDownIcon class="w-4 h-4 font-bold " />
+                                </button>
+                            </div>
+                            <span class="text-sm text-slate-400 my-2">Click the button to play.</span>
+                        </div>
+
+                    </div>
+                    <div class="relative w-[60%] p-3 primary-text">
+                        <div data-aos="fade-right"
+                            class="flex items-center justify-center w-[fit-content] mb-8 p-2 itech-shadow border-2 border-sky-900 filter bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-slate-800/90 via-slate-800/90 to-slate-800/90 rounded-[20px]">
+                            <ShieldCheckIcon class="w-10 h-10 text-sky-400" />
+                            <span class="primary-text font-bold text-xl">{{progressBarValue}}%</span>
+                        </div>
+                        <h2 class="text-lg font-bold" data-aos="fade-left">Security and Compliance</h2>
+                        <p data-aos="fade-right">
+                            Ensuring top-notch security and strict compliance measures, we prioritize safeguarding your
+                            valuable data and business integrity.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </Transition>
 </template>
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted,ref } from 'vue';
+import { useStore } from 'vuex'
 import RiveView from './Itech/ui/RiveView.vue';
 import riveSrc from '@assets/rives/developments.riv'
+import prograssRiveSrc from '@assets/rives/progress-animation.riv'
+import mobileRiveIconSrc from '@assets/rives/mobile-developments.riv'
+import { ShieldCheckIcon,ArrowPathRoundedSquareIcon, ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/24/outline'
+
+const store = useStore()
+
+const progressBarValue = ref(0);
 
 const emits = defineEmits(['click'])
 const click = () => {
-    emits('click')
+    emits('click');
 }
 
+const progressRiveLoad = ({ rive, machine, canvas }) => {
+    const inputs = rive.stateMachineInputs(machine[0]);
+    const inp = inputs.find(i => i.name === 'Level');
+    inp.value = 98
+    progressBarValue.value = 98
+    
+    let increaseIntervalTimer, decreaseIntervalTimer;
+    let incrementButton = document.getElementById('progress-bar-up')
+    let decrementButton = document.getElementById('progress-bar-down')
+    let resetButton = document.getElementById('progress-bar-reset')
+
+    function incrementValue() {
+        if(inp.value < 100){
+            inp.value++;
+        }
+        progressBarValue.value = inp.value;
+    }
+    function decreaseValue() {
+        if(inp.value > 0){
+            inp.value--;
+        }
+        progressBarValue.value = inp.value;
+    }
+
+    incrementButton.addEventListener('mousedown', ()=>{
+        increaseIntervalTimer = setInterval(incrementValue, 100);
+    })
+    incrementButton.addEventListener('mouseup', function () {
+        clearInterval(increaseIntervalTimer);
+    });
+
+    decrementButton.addEventListener('mousedown', ()=>{
+        decreaseIntervalTimer = setInterval(decreaseValue, 100);
+    })
+    decrementButton.addEventListener('mouseup', function () {
+        clearInterval(decreaseIntervalTimer);
+    });
+    resetButton.addEventListener('click', ()=>{
+        inp.value = 98;
+        progressBarValue.value = inp.value;
+    })
+}
 
 onMounted(() => {
+    window.addEventListener('scroll', async (e) => {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollPosition > 400) {
+            store.state.searchBar.show = true;
+        } else {
+            store.state.searchBar.show = false;
+        }
+    })
 })
 </script>

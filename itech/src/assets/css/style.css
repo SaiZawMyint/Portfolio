@@ -19,6 +19,7 @@ body * {
 
 body {
     background: #1D1D1D;
+    overflow-x: hidden;
 }
 
 :root {
@@ -26,6 +27,10 @@ body {
     --app-color-50: #1a96ee76;
     --app-mute-color: #e1e4e6;
     --app-dark-color: #334155;
+}
+
+.primary-text {
+    color: var(--app-color);
 }
 
 
@@ -56,6 +61,7 @@ body {
  ::-webkit-scrollbar-thumb:horizontal {
     background-color: var(--app-color);
     border-radius: 5px;
+    height: 5px;
 }
 
 
@@ -127,12 +133,19 @@ body {
     transform: scale(1);
 }
 
+.move-out-enter-from.translate-x-on {
+    transform: scale(0) translateX(-50%);
+}
+
+.move-out-enter-to.translate-x-on {
+    transform: scale(1) translateX(-50%);
+}
+
 .move-out-leave-active .fade-up {
     animation: fade reverse 1.4s 1 ease-in-out, scale reverse 1s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .move-out-leave-to {
-    left: 40%;
     opacity: 0;
 }
 
@@ -160,6 +173,10 @@ body {
 
 .comp-2-leave-active .right-comp {
     animation: right reverse 1s ease-in-out, fade reverse 2s ease-in-out;
+}
+
+.itech-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes left {
