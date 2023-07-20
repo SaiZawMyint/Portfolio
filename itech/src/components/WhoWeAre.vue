@@ -25,6 +25,7 @@
 </template>
 <script setup>
 const emits = defineEmits(['click'])
+
 const click = () => {
     emits('click')
 }

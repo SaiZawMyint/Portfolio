@@ -6,7 +6,7 @@
             <div class="logo">
                 <router-link :to="{name: 'home'}">
                     <h1 class="text-3xl font-bold text-sys-primary">
-                        i Tech
+                        Itech
                     </h1>
                 </router-link>
             </div>
