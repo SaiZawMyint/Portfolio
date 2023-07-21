@@ -15,6 +15,7 @@ export default defineComponent({
     animation: String,
     artboard: String,
     fit: String,
+    alignment: String,
     scale: {
       type: String,
       default: '1'

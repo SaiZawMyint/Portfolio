@@ -27,10 +27,15 @@ body {
     --app-color-50: #1a96ee76;
     --app-mute-color: #e1e4e6;
     --app-dark-color: #334155;
+    --app-secondary-color: #FF3EE5;
 }
 
 .primary-text {
     color: var(--app-color);
+}
+
+.secondary-text {
+    color: var(--app-secondary-color);
 }
 
 
