@@ -212,9 +212,6 @@ const progressBarValue = ref(0);
 const showCurve = ref(true);
 
 const emits = defineEmits(['click'])
-const click = () => {
-    emits('click');
-}
 
 const progressRiveLoad = ({ rive, machine, canvas }) => {
     const inputs = rive.stateMachineInputs(machine[0]);
@@ -285,7 +282,6 @@ const curveRiveLoad = ({ rive, machine, canvas }) => {
     })
     window.addEventListener('scroll', checkScrollExit);
 }
-
 
 onMounted(() => {
     window.addEventListener('scroll', async (e) => {
