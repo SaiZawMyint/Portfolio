@@ -124,12 +124,13 @@
                 </div>
 
             </div>
-            <div class="h-[100vh] flex items-start justify-center w-[80%] py-[80px]">
-                <div class="relative w-[50%] flex items-end">
-                    <div class="w-[fit-content] relative flex items-center justify-center rounded-lg " data-aos="fade-up">
+            <div class="flex flex-col mx-auto items-start justify-center w-[80%] py-[80px] mb-[80px]">
+                <div class="relative w-full flex items-end">
+                    <div class="w-[fit-content] relative flex flex-col items-center justify-center rounded-lg "
+                        data-aos="fade-up">
                         <RiveView :src="prograssRiveSrc" width="200" height="300" fit="fill"
                             :state-machine="['State Machine']" @on-load="progressRiveLoad" />
-                        <div class="absolute -bottom-[60px] flex flex-col items-center">
+                        <div class="flex flex-col items-center">
                             <div class="flex items-center justify-between">
                                 <button id="progress-bar-up"
                                     class="p-2 hover:text-slate-100 primary-text rounded-hover rounded-[10px] cursor-pointer flex items-center justify-center bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1">
@@ -148,11 +149,11 @@
                         </div>
 
                     </div>
-                    <div class="relative w-[60%] p-3 primary-text">
+                    <div class="relative w-[60%] max-w-[400px] p-3 primary-text">
                         <div data-aos="fade-right"
                             class="flex items-center justify-center w-[fit-content] mb-8 p-2 itech-shadow border-2 border-sky-900 filter bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-slate-800/90 via-slate-800/90 to-slate-800/90 rounded-[20px]">
                             <ShieldCheckIcon class="w-10 h-10 text-sky-400" />
-                            <span class="primary-text font-bold text-xl">{{progressBarValue}}%</span>
+                            <span class="primary-text font-bold text-xl">{{ progressBarValue }}%</span>
                         </div>
                         <h2 class="text-lg font-bold" data-aos="fade-left">Security and Compliance</h2>
                         <p data-aos="fade-right">
@@ -161,24 +162,54 @@
                         </p>
                     </div>
                 </div>
-
+                <div id="curve-wrapper" class="relative w-full flex items-center justify-end secondary-text">
+                    <div class="relative w-[60%] max-w-[400px] p-3 flex flex-col items-end">
+                        <div data-aos="fade-right"
+                            class=" flex items-center justify-center w-[fit-content] mb-8 p-2 itech-shadow border-2 border-[#FF3EE5] filter bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-slate-800/90 via-slate-800/90 to-slate-800/90 rounded-[20px]">
+                            <StarIcon class="w-10 h-10" />
+                            <span class="font-bold text-xl">{{ progressBarValue }}k</span>
+                        </div>
+                        <h2 class="text-lg font-bold" data-aos="fade-left">Security and Compliance</h2>
+                        <p data-aos="fade-right" class="text-right">
+                            Ensuring top-notch security and strict compliance measures, we prioritize safeguarding your
+                            valuable data and business integrity.
+                        </p>
+                    </div>
+                    <div v-if="showCurve" class="w-[fit-content] relative flex flex-col items-center justify-center rounded-lg "
+                        data-aos="fade-up">
+                        <RiveView :src="curveRiveSrc" width="300" height="300" fit="fill"
+                            :state-machine="['State Machine 1']" @on-load="curveRiveLoad" alignment="bottomCenter" />
+                        <div class="flex flex-col items-center absolute -bottom-[10px]">
+                            <div class="flex items-center justify-between">
+                                <button id="curve-bar-reset"
+                                    class="mx-2 p-2 hover:text-slate-100 secondary-text rounded-hover secondary rounded-[10px] cursor-pointer flex items-center justify-center bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-gray-900/30 via-gray-800/30 to-gray-900/30 rounded-lg ring-slate-500/50 ring-1">
+                                    <ArrowPathRoundedSquareIcon class="w-4 h-4 font-bold " /> 
+                                </button>
+                            </div>
+                            <span class="text-sm text-slate-400 my-2">Click the button re-play.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
     </Transition>
 </template>
 <script setup>
-import { onMounted,ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex'
 import RiveView from './Itech/ui/RiveView.vue';
 import riveSrc from '@assets/rives/developments.riv'
 import prograssRiveSrc from '@assets/rives/progress-animation.riv'
 import mobileRiveIconSrc from '@assets/rives/mobile-developments.riv'
-import { ShieldCheckIcon,ArrowPathRoundedSquareIcon, ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/24/outline'
+import curveRiveSrc from '@assets/rives/curve-animation.riv'
+import { ShieldCheckIcon, ArrowPathRoundedSquareIcon, ArrowUpIcon, ArrowDownIcon } from '@heroicons/vue/24/outline'
+import { StarIcon } from '@heroicons/vue/24/solid'
 
 const store = useStore()
 
 const progressBarValue = ref(0);
+const showCurve = ref(true);
 
 const emits = defineEmits(['click'])
 const click = () => {
@@ -190,43 +221,71 @@ const progressRiveLoad = ({ rive, machine, canvas }) => {
     const inp = inputs.find(i => i.name === 'Level');
     inp.value = 98
     progressBarValue.value = 98
-    
+
     let increaseIntervalTimer, decreaseIntervalTimer;
     let incrementButton = document.getElementById('progress-bar-up')
     let decrementButton = document.getElementById('progress-bar-down')
     let resetButton = document.getElementById('progress-bar-reset')
 
     function incrementValue() {
-        if(inp.value < 100){
+        if (inp.value < 100) {
             inp.value++;
         }
         progressBarValue.value = inp.value;
     }
     function decreaseValue() {
-        if(inp.value > 0){
+        if (inp.value > 0) {
             inp.value--;
         }
         progressBarValue.value = inp.value;
     }
 
-    incrementButton.addEventListener('mousedown', ()=>{
+    incrementButton.addEventListener('mousedown', () => {
         increaseIntervalTimer = setInterval(incrementValue, 100);
     })
     incrementButton.addEventListener('mouseup', function () {
         clearInterval(increaseIntervalTimer);
     });
 
-    decrementButton.addEventListener('mousedown', ()=>{
+    decrementButton.addEventListener('mousedown', () => {
         decreaseIntervalTimer = setInterval(decreaseValue, 100);
     })
     decrementButton.addEventListener('mouseup', function () {
         clearInterval(decreaseIntervalTimer);
     });
-    resetButton.addEventListener('click', ()=>{
+    resetButton.addEventListener('click', () => {
         inp.value = 98;
         progressBarValue.value = inp.value;
     })
 }
+
+const curveRiveLoad = ({ rive, machine, canvas }) => {
+    const inputs = rive.stateMachineInputs(machine[0]);
+    const inp = inputs.find(i => i.name === 'resetAnimation');
+    inp.fire()
+
+    const scrollContainer = document.getElementById('curve-wrapper');
+    const resetButton = document.getElementById('curve-bar-reset')
+
+    function checkScrollExit() {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const isContainerVisible = (
+            containerRect.top >= 0 &&
+            containerRect.bottom - containerRect.height <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+        if (!isContainerVisible) {
+            showCurve.value = false;
+        } else {
+            showCurve.value = true;
+        }
+    }
+
+    resetButton.addEventListener('click', ()=>{
+        inp.fire()
+    })
+    window.addEventListener('scroll', checkScrollExit);
+}
+
 
 onMounted(() => {
     window.addEventListener('scroll', async (e) => {
