@@ -56,7 +56,7 @@ const props = defineProps({
     },
     background: {
         type: String,
-        default: '#334155'
+        default: '#FF3EE5'
     },
     style: {
         type: Object,

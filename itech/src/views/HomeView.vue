@@ -22,7 +22,7 @@
     </template>
   </Layout>
   <Transition name="move-out">
-    <div v-if="showSearchBar" class="fixed flex items-center w-auto text-slate-400 left-[50%] bottom-[100px] -translate-x-[50%] text-lg translate-x-on ">
+    <div v-if="showSearchBar" class="fixed flex items-center w-auto text-slate-400 bottom-10 -translate-x-[50%] right-5 text-lg translate-x-on ">
       <div class="z-10 absolute -top-[96px] w-full h-full">
         <RiveView :src="searchRiv" width="300" :state-machine="['State Machine 1']" scale="0.5" @on-load="onRiveLoad" />
       </div>

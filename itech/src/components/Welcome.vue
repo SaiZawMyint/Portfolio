@@ -3,11 +3,9 @@
         <div>
             <div class="h-[100vh] mx-auto flex justify-center items-center" data-aos="zoom-in">
                 <div class="fade-up  text-slate-300 text-center">
-                    <div class="w-full flex items-center justify-center">
-                        <img src="@assets/svgs/itech-logo-dark.svg" alt="" width="400" class="-mb-[140px] -ml-[50px]">
-                    </div>
+                    <h1 class="text-sys-primary tracking-widest font-bold font-rub text-[4em]">iTech</h1>
                     <div
-                        class="-mt-4 w-[fit-content] px-2 mx-auto flex items-center justify-center text-slate-100 text-sm bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-blue-900/40 via-blue-800/40 to-blue-900/40 rounded-lg ring-slate-500/50 ring-1">
+                        class="w-[fit-content] px-2 mx-auto flex items-center justify-center text-slate-100 text-sm bg-opacity-80 bg-blur-lg backdrop-filter backdrop-blur-lg bg-gradient-to-br from-blue-900/40 via-blue-800/40 to-blue-900/40 rounded-lg ring-slate-500/50 ring-1">
                         <span class="pr-2 text-sys-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-4 h-4">
@@ -38,8 +36,8 @@
                 </div>
             </div>
             <div id="sec-section"
-                class="py-10 relative w-[80%] text-sm text-slate-300 flex flex-col items-center justify-between mx-auto h-[60%]">
-                <div class="h-[100vh] flex items-center flex-col justify-center">
+                class="py-10 w-[80%] text-sm text-slate-300 flex flex-col items-between h-[fit-content] justify-between mx-auto">
+                <div class="min-h-[100vh] flex items-center flex-col justify-center">
                     <h2 class="text-xl">
                         Services
                     </h2>
@@ -52,10 +50,10 @@
                         empower digital experiences.
                     </p>
                 </div>
-                <div class="h-[100vh] flex flex-col relative justify-center items-center">
+                <div class="min-h-[100vh] flex flex-col relative justify-center items-center py-[10vh]">
                     <div class="w-full flex justify-center items-center">
                         <div class="relative flex flex-col items-center max-w-[33%] " data-aos="fade-right">
-                            <div class="z-10 absolute -top-[190px] flex items-end justify-center w-[300px]">
+                            <div class="overflow-hidden flex items-end justify-center h-[200px] z-10">
                                 <img src="@assets/svgs/software-development.svg" style="width: 100%; margin-bottom: -50px;">
                             </div>
                             <div
@@ -75,7 +73,7 @@
                         </div>
 
                         <div class="relative flex flex-col items-center max-w-[33%] " data-aos="zoom-in">
-                            <div class="z-10 absolute -top-[150px] flex items-end justify-center w-[230px]">
+                            <div class="overflow-hidden flex items-end justify-center w-[250px] h-[200px]">
                                 <img src="@assets/svgs/web.svg" style="width: 100%; margin-bottom: -50px;">
                             </div>
                             <div
@@ -94,7 +92,7 @@
                             </div>
                         </div>
                         <div class="relative flex flex-col items-center max-w-[33%] " data-aos="fade-left">
-                            <div class="z-10 absolute -top-[100px] flex items-end justify-center w-[300px]">
+                            <div class="overflow-hidden flex items-end justify-center h-[200px] z-10">
                                 <RiveView :src="mobileRiveIconSrc" :state-machine="['stateMachine']" scale="1.3" />
                             </div>
                             <div
@@ -122,7 +120,6 @@
                     </div>
 
                 </div>
-
             </div>
             <div class="flex flex-col mx-auto items-start justify-center w-[80%] py-[80px] mb-[80px]">
                 <div class="relative w-full flex items-end">
